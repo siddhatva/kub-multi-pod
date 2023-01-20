@@ -1,16 +1,14 @@
-FROM python:3.11-slim as requirements-stage
-#FROM python:3.11.0-alpine3.17 as requirements-stage
+FROM diliplakshya/python-3.11.1-poetry-slim-bullseye:latest as requirements-stage
+ENV PYTHONUNBUFFERED 1
 
 WORKDIR /tmp
-
-RUN pip install poetry
 
 COPY pyproject.toml /tmp
 COPY poetry.lock /tmp
 
 RUN poetry export -f requirements.txt --output requirements.txt --without-hashes
 
-FROM python:3.11-slim
+FROM diliplakshya/python-3.11.1-poetry-slim-bullseye
 
 ENV PYTHONUNBUFFERED 1
 WORKDIR /app

@@ -1,15 +1,19 @@
-FROM python:3.11-slim
+FROM diliplakshya/python-3.11.1-poetry-slim-bullseye:latest as requirements-stage
+
+WORKDIR /tmp
+
+COPY pyproject.toml /tmp
+COPY poetry.lock /tmp
+
+RUN poetry export -f requirements.txt --output requirements.txt --without-hashes
+
+FROM diliplakshya/python-3.11.1-poetry-slim-bullseye
+
 ENV PYTHONUNBUFFERED 1
 WORKDIR /app
 
-COPY pyproject.toml .
-
-RUN pip3 install poetry
-# already in a virtual environment by using a docker image, there's no need to build another environment
-RUN poetry config virtualenvs.create false
-
-# Installs all the required packages minus the development packages
-RUN poetry install --no-dev
+COPY --from=requirements-stage /tmp/requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
 
 COPY tests /app/tests
 

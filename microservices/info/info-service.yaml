@@ -9,4 +9,4 @@ spec:
     - port: 5002
       name: info-main
       targetPort: 5002
-  type: NodePort
+  type: ClusterIP

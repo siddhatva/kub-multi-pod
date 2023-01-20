@@ -4,5 +4,8 @@ metadata:
   name: user-data-store-env
 data:
   folder: 'data'
-  info_host: info-service.default
+  connection_way: "dns"
+  local: "localhost"
+  ip_address: "10.107.80.34"
+  dns: info-service.default
   

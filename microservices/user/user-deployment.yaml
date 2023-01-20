@@ -30,11 +30,26 @@ spec:
                 configMapKeyRef:
                   name: user-data-store-env
                   key: folder
-            - name: INFO_HOST
+            - name: CONNECTION_WAY
               valueFrom:
                 configMapKeyRef:
                   name: user-data-store-env
-                  key: info_host
+                  key: connection_way
+            - name: LOCAL
+              valueFrom:
+                configMapKeyRef:
+                  name: user-data-store-env
+                  key: local
+            - name: IP_ADDRESS
+              valueFrom:
+                configMapKeyRef:
+                  name: user-data-store-env
+                  key: ip_address
+            - name: DNS
+              valueFrom:
+                configMapKeyRef:
+                  name: user-data-store-env
+                  key: dns
           volumeMounts:
             - mountPath: /app/data
               name: app-volume

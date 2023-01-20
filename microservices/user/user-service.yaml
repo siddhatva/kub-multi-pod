@@ -9,7 +9,7 @@ spec:
     - port: 5001
       name: user-main
       targetPort: 5001
-    - port: 2526
+    - port: 8089
       name: user-performance
       targetPort: 8089
   type: LoadBalancer
