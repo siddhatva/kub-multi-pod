@@ -4,4 +4,5 @@ metadata:
   name: user-data-store-env
 data:
   folder: 'data'
+  info_host: info-service.default
   

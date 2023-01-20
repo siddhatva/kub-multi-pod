@@ -45,9 +45,9 @@ async def info():
 @app.get("/ip")
 async def ip():
     data = None
-    url = "http://" + settings.info_service_service_host + "/read"
+    url = "http://" + settings.info_host + "/read"
     
-    print("Reading IP address info from {}".format(url))
+    print("Reading IP address from '{}'.".format(url))
     response = requests.get(url=url)
 
     if response.status_code == 200:
