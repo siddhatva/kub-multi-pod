@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: info-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: info
+  template:
+    metadata:
+      labels:
+        app: info
+    spec:
+      containers:
+        - name: info-main
+          image: diliplakshya/info-main
+          ports:
+            - containerPort: 5002
+
